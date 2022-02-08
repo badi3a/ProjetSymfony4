@@ -55,11 +55,28 @@
          <td>{{ internship.title }}</td>
          <td>{{ internship.company }}</td>
          <td>{{ internship.available }}</td>
-         <td><button class="btn btn-sm btn-info">submit</button></td>
+         <td>
+           {% if  internship.available == 0 %}
+           <button class="btn btn-sm btn-info" disabled>
+             submit
+           </button>
+           {% endif %}
+           {% if  internship.available != 0%}
+             <button class="btn btn-sm btn-info">
+               submit
+             </button>
+           {% endif %}
+           <button class="btn btn-sm btn-outline-success">show</button>
+         </td>
        </tr {% endfor %}>
        </tbody>
      </table>
-
+   <h2>Number of Internship: {{ listInternship|length }}</h2>
+    {% set count=0  %}
+    {% for i in  listInternship%}
+      {% set count=count + i.available %}
+    {%  endfor %}
+    <h2>Number of available places: {{ count }}</h2>
   </main><!-- /.container -->
 </div>
 
