@@ -21,22 +21,4 @@ class HomeController extends AbstractController
 
 
 
-    /**
-     * @Route("/hello", name="helloPage")
-     */
-    public function hello(): Response
-    {
-        return $this->render('home/hello.html.twig');
-    }
-    /**
-     * @Route("/helloName", name="helloByNamePage")
-     */
-    public function helloByName(): Response
-    {   $name="Ali";
-        return $this->render('home/hello.html.twig',
-        [
-            "name"=>$name
-        ]);
-    }
-
 }
