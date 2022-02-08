@@ -66,7 +66,10 @@
                submit
              </button>
            {% endif %}
-           <button class="btn btn-sm btn-outline-success">show</button>
+           <a href="{{ path('showInternship',{'ref':internship.ref, 'company':internship.company }) }}"
+              class="btn btn-sm btn-outline-success">
+             show
+           </a>
          </td>
        </tr {% endfor %}>
        </tbody>

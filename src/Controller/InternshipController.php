@@ -20,6 +20,16 @@ class InternshipController extends AbstractController
         array('listInternship'=>$listInternship)
         );
     }
-
+   /**
+    * @Route("/internship/{ref}/{company}", name="showInternship")
+    */
+    public function showDetail($ref,$company):Response{
+        return $this->render('internship/show.html.twig',
+        [
+            'ref'=>$ref,
+            'c'=>$company
+        ]
+        );
+    }
 
 }
