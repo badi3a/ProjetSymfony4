@@ -17,4 +17,9 @@ class ClassroomController extends AbstractController
             'controller_name' => 'ClassroomController',
         ]);
     }
+    //method => getAllClassroom
+
+    //method => Add Classroom
+    //method => update classroom
+    //method => delete classroom
 }
