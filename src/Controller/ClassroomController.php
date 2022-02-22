@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Classroom;
+use App\Form\ClassroomType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -33,6 +35,7 @@ class ClassroomController extends AbstractController
                    ['list'=>$list]
        );
     }
+
     //method => delete classroom
     /**
      * @Route("delete/{id}", name="deleteClassroom")
@@ -48,7 +51,32 @@ class ClassroomController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('listClassroomPage');
     }
+
     //method => Add Classroom
+    /**
+     * @Route("/new",name="newClassroom")
+     */
+    public function addClassroom(Request $request):Response{
+        //create an instance of ClassRoom
+        $classroom= new Classroom();
+        //create the form
+        $form=$this
+            ->createForm(ClassroomType::class,$classroom);
+        $form=$form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            //persist data into the DB
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($classroom);
+            $em->flush();
+            return $this->redirectToRoute("listClassroomPage");
+        }
+        //return the form
+        return $this->render('classroom/new.html.twig',[
+            'form'=>$form->createView()
+            ]);
+    }
+
+
     //method => update classroom
 
 }

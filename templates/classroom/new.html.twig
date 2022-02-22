@@ -1,0 +1,17 @@
+<html>
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h1>
+    Add a new Classroom
+</h1>
+{{ form_start(form) }}
+<label>Name*:</label>
+ {{ form_widget(form.name) }}
+ <br>
+ <input type="submit" name="save" value="save">
+{{ form_end(form) }}
+</body>
+</html>
