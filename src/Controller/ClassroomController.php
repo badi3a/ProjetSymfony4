@@ -33,10 +33,22 @@ class ClassroomController extends AbstractController
                    ['list'=>$list]
        );
     }
-
-
-
+    //method => delete classroom
+    /**
+     * @Route("delete/{id}", name="deleteClassroom")
+     */
+    public function deleteClassroom($id):Response{
+        //prepare the manager
+        $em= $this->getDoctrine()->getManager();
+        //object
+        $classroom=$em->getRepository(Classroom::class)->find($id);
+        //remove the object
+        $em->remove($classroom);
+        //remove from database
+        $em->flush();
+        return $this->redirectToRoute('listClassroomPage');
+    }
     //method => Add Classroom
     //method => update classroom
-    //method => delete classroom
+
 }
