@@ -5,18 +5,22 @@
 </head>
 <body>
 <button>add a new Classroom</button>
-  <table>
-      <tr><th>id</th><th>name</th><th>action</th></tr>
-      <tr {% for c in list %}>
-          <td>{{ c.id }}</td>
-          <td>{{ c.name }}</td>
-          <td>
-              <a href="{{ path('deleteClassroom',{'id':c.id}) }}" >
-                  <button>delete</button>
-              </a>
-              <button>update</button>
-          </td>
-      </tr {% endfor %}>
-  </table>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>action</th>
+    </tr>
+    <tr {% for c in list %}>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>
+            <a href="{{ path('deleteClassroom',{'id':c.id}) }}">
+                <button>delete</button>
+            </a>
+            <button>update</button>
+        </td>
+    </tr {% endfor %}>
+</table>
 </body>
 </html>
