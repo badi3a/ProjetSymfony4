@@ -20,7 +20,10 @@ add a new Classroom
             <a href="{{ path('deleteClassroom',{'id':c.id}) }}">
                 <button>delete</button>
             </a>
-            <button>update</button>
+            <a href="{{ path('updateClassroom',{'id':c.id}) }}">
+                <button>update</button>
+            </a>
+
         </td>
     </tr {% endfor %}>
 </table>
